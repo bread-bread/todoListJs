@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{htmlWebpackPlugin.options.title}}</title>
+</head>
+<body>
+  <div class="wrapper">
+     <div class="todos">
+        <div class="todos__header">To do list</div>
+        <div class="todos__enter input-wrap">
+            <input type="text" id="enter" class="todos__input input">
+            <label for="enter" class="label">Enter your task</label>
+            <button class="todos__btn btn">Add task</button>
+        </div>
+        <div class="todos__filter input-wrap">
+          <input type="text" class="todos__filter input" id="filter">
+          <label for="filter" class="label">Search your task</label>
+        </div>
+        <div class="todos__body">
+          <ul class="todos__list">
+          </ul>
+          <button class="todos__clear btn">Clear all</button>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

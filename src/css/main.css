@@ -1,0 +1,236 @@
+@font-face {
+    font-family: 'roboto-medium';
+    src: local('Roboto'),
+    url('./../fonts/Roboto-Medium.ttf');
+    font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'roboto';
+    src: local('Roboto'), 
+    url('./../fonts/Roboto-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'roboto-light';
+    src: local('Roboto'),
+    url('./../fonts/Roboto-Light.ttf');
+    font-weight: 300;
+	font-style: normal;
+}
+
+body,
+html {
+    margin: 0;
+    height: 100%;
+}
+
+html {
+    font-size: 16px;
+}
+body {
+    font-family: 'roboto', sans-serif;
+    line-height: 1.42;
+    -webkit-font-smoothing: antialiased;
+}
+* {
+    box-sizing: border-box;
+}
+.wrapper {
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+.todos {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.todos__header {
+    font-size: 32px;
+    font-family: 'roboto-medium';
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.input-wrap {
+    width: 100%;
+    position: relative;
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #a6a6a6;
+    resize: none;
+    transition: 0.3s;
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 20px;
+}
+.todos__filter {
+    margin-right: 0;
+}
+.label {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: 0.3s;
+    color: #a6a6a6;
+}
+
+.textarea+.label {
+    top: 0;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-bottom-color: #26a69a;
+    box-shadow: 0 1px 0 0 #26a69a;
+}
+
+.input:focus+label {
+    bottom: 100%;
+    font-size: 14px;
+    color: #26a69a;
+}
+
+.textarea:focus+label {
+    top: -16px;
+    font-size: 14px;
+    color: #26a69a;
+}
+
+.filled .input+label {
+    bottom: 100%;
+    font-size: 14px;
+}
+.filled .textarea+label {
+    top: -16px;
+    font-size: 14px;
+}
+
+.btn-wrap {
+    text-align: right;
+}
+
+.btn {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 30px;
+    background-color: #26a69a;
+    color: #fff;
+    font-family: 'roboto-medium';
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -1px rgba(0, 0, 0, 0.2);
+    background-color: #30cfc0;
+}
+.todos__list {
+    margin-bottom: 25px;
+}
+.todos__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #a6a6a6;
+    padding-bottom: 10px;
+}
+.todos__checkbox {
+    position: absolute;
+    left: -9999px;
+}
+.todos__text {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 1;
+    font-size: 18px;
+    position: relative;
+    max-width: 465px;
+}
+.todos__text::before,
+.todos__text::after {
+    content: '';
+    display: block;
+}
+.todos__text::before {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border: 1px solid #a6a6a6;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    vertical-align: bottom;
+    margin-right: 15px;
+}
+.todos__text::after {
+    width: 0;
+    height: 0;
+    transition: 0.3s;
+    position: absolute;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    top: 0;
+    left: 6px;
+    transform: rotate(45deg);
+}
+.todos__checkbox:checked + .todos__text::before {
+    background-color: #26a69a;
+    border: 1px solid #26a69a;
+}
+.todos__checkbox:checked + .todos__text::after {
+    width: 4px;
+    height: 10px;
+}
+.todos__checkbox:checked + .todos__text {
+    text-decoration: line-through;
+}
+.delete-btn {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    display: block;
+}
+.delete-btn__line {
+    width: 18px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.delete-btn__line:first-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
