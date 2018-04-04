@@ -16,10 +16,10 @@ if (localStorage.storage) {
 addBtn.addEventListener('click', addTask);
 filterInput.addEventListener('keyup', filter);
 clearAll.addEventListener('click', deleteAllTasks);
-todos.addEventListener('click', deleteTask);
+list.addEventListener('click', deleteTask);
 todos.addEventListener('keyup', (e) => {
 
-    if (e.target.value != '') {
+    if (e.target.value != '' && e.target.getAttribute('type') === 'text') {
         e.target.parentNode.classList.add('filled');
     } else {
         e.target.parentNode.classList.remove('filled');
@@ -81,6 +81,7 @@ function filter (e) {
 
 function addTask () {
     if (input.value.length > 2) {
+        localStorage.storage ? storageArr = JSON.parse(localStorage.storage) : storageArr = [];
         list.appendChild(createElem(input.value));
         storageArr.push(input.value);
         localStorage.storage = JSON.stringify(storageArr);
@@ -89,6 +90,7 @@ function addTask () {
     }
 }
 function deleteTask (e) {
+
     let tasksList = document.querySelectorAll('.todos__item'),
         storeArr;
 
@@ -97,6 +99,7 @@ function deleteTask (e) {
     }
 
     if (e.target.classList.contains('todos__delete')) {
+        e.preventDefault();
         list.removeChild(e.target.parentNode);
         tasksList.forEach((item, ndx) => {
             if (item === e.target.parentNode) {
